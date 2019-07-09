@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.moonassist</groupId>
+    <artifactId>moonassist-backend-parent</artifactId>
+    <version>0.0.2-SNAPSHOT</version>
+    <relativePath>../</relativePath>
+  </parent>
+
+  <groupId>com.moonassist</groupId>
+  <artifactId>backend-system-model</artifactId>
+  <version>0.0.2-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>moonoassist-backend-model</name>
+  <description>Backend System API model</description>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+      <!--<version>2.0.2.RELEASE</version>-->
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <version>${springboot.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.2.5</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>23.5-jre</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.5</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.vladmihalcea</groupId>
+      <artifactId>hibernate-types-52</artifactId>
+      <version>2.2.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.9.5</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.9.5</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>2.3.0</version>
+    </dependency>
+
+    <!-- Test library -->
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.liquibase</groupId>
+      <artifactId>liquibase-core</artifactId>
+      <version>3.4.1</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <profiles>
+    <profile>
+      <id>migrate-db</id>
+
+      <activation>
+        <property>
+          <name>env.LIQUIDBASE</name>
+        </property>
+      </activation>
+
+      <build>
+
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <version>1.10</version>
+            <executions>
+              <execution>
+                <id>regex-properties</id>
+                <goals>
+                  <goal>regex-properties</goal>
+                </goals>
+                <configuration>
+                  <regexPropertySettings>
+
+                    <regexPropertySetting>
+                      <name>liquibase_username</name>
+                      <value>${env.DATABASE_URL}</value>
+                      <regex>postgres:\/\/(.*):.*@.*$</regex>
+                      <replacement>$1</replacement>
+                      <failIfNoMatch>true</failIfNoMatch>
+                    </regexPropertySetting>
+
+                    <regexPropertySetting>
+                      <name>liquibase_password</name>
+                      <value>${env.DATABASE_URL}</value>
+                      <regex>postgres:\/\/.*:(.*)\@.*</regex>
+                      <replacement>$1</replacement>
+                      <failIfNoMatch>true</failIfNoMatch>
+                    </regexPropertySetting>
+
+                    <regexPropertySetting>
+                      <name>liquibase_url</name>
+                      <value>${env.DATABASE_URL}</value>
+                      <regex>postgres:\/\/.*\@(.*)</regex>
+                      <replacement>jdbc:postgresql://$1</replacement>
+                      <failIfNoMatch>true</failIfNoMatch>
+                    </regexPropertySetting>
+
+                  </regexPropertySettings>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-maven-plugin</artifactId>
+            <version>3.3.2</version>
+            <dependencies>
+              <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>42.2.5</version>
+              </dependency>
+            </dependencies>
+            <configuration>
+              <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+              <changeLogFile>src/main/resources/db-migrations/changelog.xml</changeLogFile>
+              <driver>org.postgresql.Driver</driver>
+              <url>${liquibase_url}</url>
+              <username>${liquibase_username}</username>
+              <password>${liquibase_password}</password>
+            </configuration>
+            <executions>
+              <execution>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>update</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+        </plugins>
+
+      </build>
+
+    </profile>
+
+  </profiles>
+
+  <build>
+  </build>
+
+
+</project>

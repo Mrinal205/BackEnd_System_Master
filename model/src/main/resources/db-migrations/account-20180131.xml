@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+  <changeSet author="eric.anderson" id="update_accounts_names">
+
+    <preConditions onFail="MARK_RAN">
+        <columnExists tableName="accounts" columnName="first_name" />
+      <and>
+        <columnExists tableName="accounts" columnName="last_name" />
+      </and>
+    </preConditions>
+
+
+    <dropColumn tableName="accounts" columnName="first_name" />
+
+    <dropColumn tableName="accounts" columnName="last_name" />
+
+  </changeSet>
+
+</databaseChangeLog>

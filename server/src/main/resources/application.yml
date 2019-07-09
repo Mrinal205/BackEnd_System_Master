@@ -1,0 +1,48 @@
+datasource:
+  moonassist:
+    url: jdbc:postgresql://localhost:5432/moonassist?user=moonassist&password=moonassist
+    username: moonassist
+    password: moonassist
+    driverClassName: org.postgresql.Driver
+    defaultSchema:
+    maxPoolSize: 10
+    hibernate:
+      hbm2ddl.method: validate
+      show_sql: false
+      format_sql: false
+      dialect: org.hibernate.dialect.PostgreSQL9Dialect
+
+encryption:
+  authentication:
+    key: asdfasdf789070asdasdfasd8a9870dafds
+  exchange:
+    alias1:
+      key: Bar12345Bar54321
+
+logging:
+  level:
+    root: INFO
+    com:
+      moonassist:
+        system:
+          config:
+            RequestConfiguration: INFO
+    org:
+      hibernate:
+        validator: INFO
+#    si:
+#      mazi:
+#        rescu:
+#          HttpTemplate: TRACE
+
+ticker:
+  url: https://test-moonassist-backend-ticker.herokuapp.com
+
+management:
+  security:
+    enabled: false
+
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/moonassist?user=moonassist&password=moonassist"
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+  <!--Users-->
+  <include file="user-20171203.xml" relativeToChangelogFile="true"/>
+  <include file="user-20171208.xml" relativeToChangelogFile="true"/>
+  <include file="user-20171210.xml" relativeToChangelogFile="true"/>
+  <include file="user-20171211.xml" relativeToChangelogFile="true"/>
+  <include file="twofactor-20171219.xml" relativeToChangelogFile="true"/>
+  <include file="twofactor-20180114.xml" relativeToChangelogFile="true"/>
+  <include file="user-20180202.xml" relativeToChangelogFile="true"/>
+  <include file="user-20180208.xml" relativeToChangelogFile="true"/>
+
+  <!--Events-->
+  <include file="events-20171211.xml" relativeToChangelogFile="true"/>
+  <include file="events-20171228.xml" relativeToChangelogFile="true"/>
+
+  <!--Accounts -->
+  <include file="account-20171218.xml" relativeToChangelogFile="true"/>
+  <include file="address-20171218.xml" relativeToChangelogFile="true"/>
+  <include file="exchanges-20171218.xml" relativeToChangelogFile="true"/>
+  <include file="account-20180117.xml" relativeToChangelogFile="true"/>
+  <include file="account-20180131.xml" relativeToChangelogFile="true"/>
+  <include file="email_subscription-20180206.xml" relativeToChangelogFile="true"/>
+  <include file="exchanges-20180516.xml" relativeToChangelogFile="true"/>
+  <include file="net_worth-20180909.xml" relativeToChangelogFile="true"/>
+  <include file="exchanges-20181021.xml" relativeToChangelogFile="true"/>
+
+  <!-- Orders -->
+  <include file="order-20180421.xml" relativeToChangelogFile="true"/>
+  <include file="order-20180424.xml" relativeToChangelogFile="true"/>
+  <include file="order-20180511.xml" relativeToChangelogFile="true"/>
+  <include file="order-20181016.xml" relativeToChangelogFile="true"/>
+
+  <!-- Favorite markets -->
+  <include file="favorite_market-20180626.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

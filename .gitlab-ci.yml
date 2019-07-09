@@ -1,0 +1,33 @@
+image: java:10
+
+stages:
+  - build
+  - deploy
+
+maven-build:
+  stage: build
+  image: maven:3-jdk-10
+  script: mvn package -DskipTests
+
+
+deploy-heroku-test:
+  image: ruby:2.2
+  stage: deploy
+  only:
+    - develop
+  script:
+    - apt-get update -yq
+    - apt-get install rubygems ruby-dev -y
+    - gem install dpl
+    - dpl --provider=heroku --app=test-backend-moonassist --api-key=$HEROKU_API_KEY
+
+deploy-heroku-production:
+  image: ruby:2.2
+  stage: deploy
+  only:
+    - master
+  script:
+    - apt-get update -yq
+    - apt-get install rubygems ruby-dev -y
+    - gem install dpl
+    - dpl --provider=heroku --app=moonassist-backend-production --api-key=$HEROKU_API_KEY

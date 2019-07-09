@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+  <changeSet author="eric.anderson" id="update_accounts_names">
+
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <columnExists tableName="accounts" columnName="first_name"/>
+      </not>
+    </preConditions>
+
+
+    <addColumn tableName="accounts">
+      <column name="first_name" type="varchar(255)" />
+    </addColumn>
+
+    <addColumn tableName="accounts">
+      <column name="last_name" type="varchar(255)" />
+    </addColumn>
+
+    <addColumn tableName="accounts">
+      <column name="dob" type="TIMESTAMP" />
+    </addColumn>
+
+    <addColumn tableName="accounts">
+      <column name="phone" type="varchar(255)" />
+    </addColumn>
+
+    <dropColumn tableName="accounts" columnName="contact" />
+
+
+  </changeSet>
+
+</databaseChangeLog>

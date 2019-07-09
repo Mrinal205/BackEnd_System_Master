@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>org.knowm.xchange</groupId>
+  <artifactId>xchange-core</artifactId>
+  <version>4.3.13-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20181115.150539</timestamp>
+      <buildNumber>11</buildNumber>
+    </snapshot>
+    <lastUpdated>20181115150539</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>4.3.13-20181115.150539-11</value>
+        <updated>20181115150539</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>4.3.13-20181115.150539-11</value>
+        <updated>20181115150539</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <classifier>sources</classifier>
+        <extension>jar</extension>
+        <value>4.3.13-20181115.150539-11</value>
+        <updated>20181115150539</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <classifier>javadoc</classifier>
+        <extension>jar</extension>
+        <value>4.3.13-20181115.150539-11</value>
+        <updated>20181115150539</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>

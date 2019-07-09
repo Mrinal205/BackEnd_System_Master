@@ -1,0 +1,14 @@
+logging:
+  level:
+    root: INFO
+    com:
+      moonassit: INFO
+    org:
+      apache:
+        logging:
+          log4j: TRACE
+      springframework: INFO
+    si:
+      mazi:
+        rescu:
+          HttpTemplate: TRACE

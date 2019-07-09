@@ -1,0 +1,17 @@
+datasource:
+  sampleapp:
+    url: jdbc:postgresql://localhost:5432/moonassist?user=moonassist&password=moonassist
+    username: moonassist
+    password: moonassist
+    driverClassName: org.postgresql.Driver
+    defaultSchema:
+    maxPoolSize: 11
+    hibernate:
+      hbm2ddl.method: validate
+      show_sql: false
+      format_sql: false
+      dialect: org.hibernate.dialect.PostgreSQL9Dialect
+
+#encryption:
+#  authentication:
+#    key: Bar12345Bar12345

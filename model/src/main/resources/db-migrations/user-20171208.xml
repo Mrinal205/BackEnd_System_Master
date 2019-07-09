@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+  <changeSet author="eric.anderson" id="add_more_hash_info">
+
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <columnExists tableName="users" columnName="password_hash_date"/>
+      </not>
+    </preConditions>
+
+
+    <addColumn tableName="users">
+      <column name="password_hash_date" type="Timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+
+    <addColumn tableName="users">
+      <column name="password_hash_version" type="varchar(255)" defaultValue="0.1">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+
+  </changeSet>
+
+</databaseChangeLog>

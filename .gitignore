@@ -1,0 +1,19 @@
+# Build output directies
+target/
+
+# IntelliJ specific files/directories
+out
+.idea
+*.ipr
+*.iws
+*.iml
+
+# Eclipse specific files/directories
+.classpath
+.project
+.settings
+.metadata
+bin/
+
+# Others
+/rebel.xml

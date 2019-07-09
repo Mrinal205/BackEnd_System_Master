@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.moonassist</groupId>
+    <artifactId>moonassist-backend-parent</artifactId>
+    <version>0.0.2-SNAPSHOT</version>
+    <relativePath>../</relativePath>
+  </parent>
+
+  <groupId>com.moonassist</groupId>
+  <artifactId>backend-system-service</artifactId>
+  <version>0.0.2-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>moonoassist-backend-service</name>
+  <description>Backend System API model</description>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>com.moonassist</groupId>
+      <artifactId>backend-system-bind</artifactId>
+      <version>0.0.2-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.moonassist</groupId>
+      <artifactId>backend-system-model</artifactId>
+      <version>0.0.2-SNAPSHOT</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>com.moonassist</groupId>
+      <artifactId>mailerlite-client</artifactId>
+      <version>0.0.2-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>23.5-jre</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.6</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mindrot</groupId>
+      <artifactId>jbcrypt</artifactId>
+      <version>0.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.neovisionaries</groupId>
+      <artifactId>nv-i18n</artifactId>
+      <version>1.22</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.10</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.zxing</groupId>
+      <artifactId>javase</artifactId>
+      <version>3.2.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.mashape.unirest</groupId>
+      <artifactId>unirest-java</artifactId>
+      <version>1.4.9</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.spullara.mustache.java</groupId>
+      <artifactId>compiler</artifactId>
+      <version>0.9.5</version>
+    </dependency>
+
+    <!-- For lookup of user-agent values -->
+    <dependency>
+      <groupId>com.blueconic</groupId>
+      <artifactId>browscap-java</artifactId>
+      <version>1.2.1</version>
+    </dependency>
+
+    <!-- XChange libraries -->
+    <dependency>
+      <groupId>org.knowm.xchange</groupId>
+      <artifactId>xchange-core</artifactId>
+      <version>${xchange.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.knowm.xchange</groupId>
+      <artifactId>xchange-bittrex</artifactId>
+      <version>${xchange.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.knowm.xchange</groupId>
+      <artifactId>xchange-coinbasepro</artifactId>
+      <!--<version>${xchange.version}</version>-->
+      <version>4.3.13-moonassist-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.knowm.xchange</groupId>
+      <artifactId>xchange-kucoin</artifactId>
+      <version>${xchange.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.knowm.xchange</groupId>
+      <artifactId>xchange-binance</artifactId>
+      <version>${xchange.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.knowm.xchange</groupId>
+      <artifactId>xchange-poloniex</artifactId>
+      <version>${xchange.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.knowm.xchange</groupId>
+      <artifactId>xchange-kraken</artifactId>
+      <version>${xchange.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>5.0.2.RELEASE</version>
+    </dependency>
+
+
+    <!-- Test library -->
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <version>2.0.2-beta</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.11.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.11.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
+      <version>2.0.1</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/template</directory>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
+      </testResource>
+    </testResources>
+  </build>
+
+</project>

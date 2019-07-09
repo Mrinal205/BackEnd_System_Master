@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+  <changeSet author="eric.anderson" id="update_exchnage_additional_p">
+
+    <preConditions onFail="MARK_RAN">
+      <dbms type="postgresql" />
+      <and>
+        <not>
+          <columnExists tableName="exchanges" columnName="additional" />
+        </not>
+      </and>
+    </preConditions>
+
+    <addColumn tableName="exchanges">
+      <column name="additional" type="text" />
+    </addColumn>
+
+  </changeSet>
+
+
+  <changeSet author="eric.anderson" id="update_exchnage_additional_h2">
+
+    <preConditions onFail="MARK_RAN">
+      <dbms type="h2" />
+      <and>
+        <not>
+          <columnExists tableName="exchanges" columnName="additional" />
+        </not>
+      </and>
+    </preConditions>
+
+    <addColumn tableName="exchanges">
+      <column name="additional" type="varchar(1000)" />
+    </addColumn>
+
+  </changeSet>
+
+
+</databaseChangeLog>

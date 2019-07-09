@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+  <changeSet author="eric.anderson" id="create_events_table">
+
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <tableExists tableName="events" />
+      </not>
+    </preConditions>
+
+    <createTable tableName="events">
+
+      <column name="id" type="uuid">
+        <constraints nullable="false" primaryKey="true" />
+      </column>
+
+      <column name="ip_address" type="varchar(255)">
+        <constraints nullable="false" />
+      </column>
+
+      <column name="event_type" type="varchar(255)">
+        <constraints nullable="false" />
+      </column>
+
+      <column name="created" type="Timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+        <constraints nullable="false"/>
+      </column>
+
+      <column name="details" type="varchar(255)">
+        <constraints />
+      </column>
+
+      <column name="user_id" type="uuid">
+        <constraints nullable="false"
+                     foreignKeyName="fk_events_user_id"
+                     references="users(id)"/>
+      </column>
+
+    </createTable>
+
+  </changeSet>
+
+</databaseChangeLog>

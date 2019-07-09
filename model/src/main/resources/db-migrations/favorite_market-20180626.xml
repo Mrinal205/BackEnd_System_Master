@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+	<changeSet author="dan.bite-toma" id="create_favorite_market_table">
+
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="favorite_markets" />
+			</not>
+		</preConditions>
+
+		<createTable tableName="favorite_markets">
+
+			<column name="id" type="uuid">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+
+			<column name="exchange_id" type="uuid">
+				<constraints nullable="false" foreignKeyName="fk_favorite_markets_exchange_id" references="exchanges(id)" />
+			</column>
+
+			<column name="user_id" type="uuid">
+				<constraints nullable="false" foreignKeyName="fk_favorite_markets_user_id" references="users(id)" />
+			</column>
+
+			<column name="symbol_pair" type="varchar(20)">
+				<constraints nullable="false" />
+			</column>
+
+		</createTable>
+
+	</changeSet>
+
+</databaseChangeLog>

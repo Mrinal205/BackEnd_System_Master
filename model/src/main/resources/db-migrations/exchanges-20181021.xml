@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+  <changeSet author="eric.anderson" id="update_exchange_details_p">
+
+    <preConditions onFail="MARK_RAN">
+      <dbms type="postgresql" />
+      <and>
+        <not>
+          <columnExists tableName="exchanges" columnName="encryption_type" />
+        </not>
+      </and>
+    </preConditions>
+
+    <addColumn tableName="exchanges">
+      <column name="encryption_type" type="text" defaultValue="CLEAR_TEXT"/>
+    </addColumn>
+
+    <addColumn tableName="exchanges">
+      <column name="encryption_date"  type="Timestamp" />
+    </addColumn>
+
+    <addColumn tableName="exchanges">
+      <column name="encryption_alias" type="text" />
+    </addColumn>
+
+  </changeSet>
+
+
+  <changeSet author="eric.anderson" id="update_exchange_details_h2">
+
+    <preConditions onFail="MARK_RAN">
+      <dbms type="h2" />
+      <and>
+        <not>
+          <columnExists tableName="exchanges" columnName="encryption_type" />
+        </not>
+      </and>
+    </preConditions>
+
+    <addColumn tableName="exchanges">
+      <column name="encryption_type" type="varchar(255)" defaultValue="CLEAR_TEXT"/>
+    </addColumn>
+
+    <addColumn tableName="exchanges">
+      <column name="encryption_date"  type="Timestamp" />
+    </addColumn>
+
+    <addColumn tableName="exchanges">
+      <column name="encryption_alias" type="varchar(255)" />
+    </addColumn>
+
+  </changeSet>
+
+
+</databaseChangeLog>

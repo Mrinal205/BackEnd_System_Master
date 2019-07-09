@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.knowm.xchange</groupId>
+  <artifactId>xchange-coinbasepro</artifactId>
+  <versioning>
+    <versions>
+      <version>4.3.13-moonassist-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20181118164742</lastUpdated>
+  </versioning>
+</metadata>

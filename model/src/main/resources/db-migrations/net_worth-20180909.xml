@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+  <changeSet author="eric.anderson" id="create_account_balance">
+
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <tableExists tableName="net_worth" />
+      </not>
+    </preConditions>
+
+    <createTable tableName="net_worth">
+
+      <column name="id" type="uuid">
+        <constraints nullable="false" primaryKey="true" />
+      </column>
+
+      <column name="account_id" type="uuid">
+        <constraints nullable="false" />
+      </column>
+
+      <column name="value" type="numeric">
+        <constraints nullable="false" />
+      </column>
+
+      <column name="currency" type="varchar(10)">
+        <constraints nullable="false" />
+      </column>
+
+      <column name="created" type="Timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+        <constraints nullable="false"/>
+      </column>
+
+    </createTable>
+
+  </changeSet>
+
+</databaseChangeLog>
